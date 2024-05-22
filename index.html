@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Dog</title>
+</head>
+<style>
+    #canvas{
+        border: 2px solid black;
+        background-color: beige;
+    }
+</style>
+<body>
+    <canvas id="canvas" width="640" height="720">
+        <script>
+            function ellipse(x, y, radx, rady, rot, sAngle, eAngle, flip){
+                var canvas = document.getElementById('canvas');
+                var line = canvas.getContext('2d');
+                line.lineWidth = 2.0;
+                line.strokeStyle = 'black';
+                line.beginPath();
+                if(flip){
+                    line.save();
+                    line.scale(-1, 1);
+                    x = -x;
+                }
+                line.ellipse(x, y, radx, rady, rot, sAngle, eAngle);
+                line.strokeStyle = 'black'
+                line.stroke();
+                line.fillStyle = 'lightblue';
+                line.fill();
+                line.restore();
+            }
+            function text(x, y, text, font) {
+                var canvas = document.getElementById('canvas');
+                var ctx = canvas.getContext('2d');
+                ctx.font = font;
+                ctx.fillStyle = 'dimgrey';
+                ctx.fillText(text, x, y);
+            }
+            ellipse(175, 175, 50, 90, Math.PI / 9, 0, 2 * Math.PI, false);
+            ellipse(175, 450, 50, 120, Math.PI / 6 , 0, 2 * Math.PI, false);
+            ellipse(200, 300, 50, 90, Math.PI / 6, 0, 2 * Math.PI, true);
+            ellipse(114, 233, 90, 50, Math.PI / 25, 0, 2 * Math.PI, false);
+            ellipse(214, 175, 50, 90, Math.PI / 9, 0, 2 * Math.PI, false);
+            ellipse(414, 450, 50, 120, Math.PI / 6, 0 , 2 * Math.PI, true);
+            ellipse(325, 350, 90, 50, 0, 0, 2 * Math.PI, false);
+            ellipse(450, 275, 50, 90, Math.PI / 6, 0, 2 * Math.PI, false);
+            ellipse(200, 466, 50, 120, Math.PI / 6 , 0, 2 * Math.PI, false);
+            ellipse(450, 450, 50, 120, Math.PI / 6, 0 , 2 * Math.PI, true);
+            text(225, 640, 'Balloon Dog', '30px Elephant')
+        </script>
+    </canvas>
+</body>
+</html>
